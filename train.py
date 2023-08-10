@@ -40,7 +40,7 @@ if __name__ == "__main__":
     parser.add_argument("--num-epochs", help="Number of training epochs", default=10)
     parser.add_argument("--num-finetune-epochs", help = "Number of fine tune epochs", default=10)
     parser.add_argument("--batch-size", help="Batch size", default=2)
-    parser.add_argument("--run-test", help="Run model evaluation on testing set", default=False)
+    # parser.add_argument("--run-test", help="Run model evaluation on testing set", default=False)
     args = parser.parse_args()
 
     TRAIN_DIR = os.path.join(args.dataset_path, 'train')
@@ -116,15 +116,15 @@ if __name__ == "__main__":
                             callbacks=[es])
     logging.info("finished model fine tuning")
 
-    if args.run_test:
-        logging.info('Run evaluation on testing set')
-        TEST_DIR = os.path.join(args.dataset_path, "test_images")
-        test_dataset = tf.keras.utils.image_dataset_from_directory(TEST_DIR,
-                                                                batch_size=args.batch_size,
-                                                                image_size=IMG_SIZE)
-        test_dataset = test_dataset.prefetch(buffer_size=AUTOTUNE)
-        loss, accuracy = model.evaluate(test_dataset)
-        logging.info('Test accuracy : %f', accuracy)
+    # if args.run_test:
+    #     logging.info('Run evaluation on testing set')
+    #     TEST_DIR = os.path.join(args.dataset_path, "test_images")
+    #     test_dataset = tf.keras.utils.image_dataset_from_directory(TEST_DIR,
+    #                                                             batch_size=args.batch_size,
+    #                                                             image_size=IMG_SIZE)
+    #     test_dataset = test_dataset.prefetch(buffer_size=AUTOTUNE)
+    #     loss, accuracy = model.evaluate(test_dataset)
+    #     logging.info('Test accuracy : %f', accuracy)
 
     #SAVE MODEL
     model.save(args.save_dir)
