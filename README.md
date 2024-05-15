@@ -1,6 +1,6 @@
 # Image classification: classify 'fields' and 'roads'
 ## Introduction
-An image classification model based on MobileNetV2. This model is trained to classify between images of 'roads' or 'fiels'
+An image classification model based on MobileNetV2. This model is trained to classify between images of 'roads' or 'fields'
 ## Installation
 To install required packages, run:
 ```bash
